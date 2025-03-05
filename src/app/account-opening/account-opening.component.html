@@ -1,0 +1,54 @@
+<form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+
+    <label for="fullName">Full Name</label>
+    <input id="fullName" type="text" formControlName="fullName" placeholder="Enter full name">
+    <div class="error" *ngIf="submitted && f['fullName'].errors">
+        <small *ngIf="f['fullName'].errors['required']">Full Name is required</small>
+    </div>
+
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" placeholder="Enter email">
+    <div class="error" *ngIf="submitted && f['email'].errors">
+        <small *ngIf="f['email'].errors['required']">Email is required</small>
+        <small *ngIf="f['email'].errors['email']">Invalid email format</small>
+    </div>
+
+    <label for="phone">Phone Number</label>
+    <input id="phone" type="text" formControlName="phone" placeholder="Enter 10-digit phone number">
+    <div class="error" *ngIf="submitted && f['phone'].errors">
+        <small *ngIf="f['phone'].errors['required']">Phone Number is required</small>
+        <small *ngIf="f['phone'].errors['pattern']">Enter a valid 10-digit number</small>
+    </div>
+
+    <label for="address">Address</label>
+    <textarea id="address" formControlName="address" placeholder="Enter address"></textarea>
+    <div class="error" *ngIf="submitted && f['address'].errors">
+        <small *ngIf="f['address'].errors['required']">Address is required</small>
+    </div>
+
+    <label for="accountType">Account Type</label>
+    <select id="accountType" formControlName="accountType">
+        <option value="" disabled selected>Select Account Type</option>
+        <option value="savings">Savings</option>
+        <option value="checking">Checking</option>
+    </select>
+    <div class="error" *ngIf="submitted && f['accountType'].errors">
+        <small *ngIf="f['accountType'].errors['required']">Account Type is required</small>
+    </div>
+
+    <label for="initialDeposit">Initial Deposit ($)</label>
+    <input id="initialDeposit" type="number" formControlName="initialDeposit" placeholder="Minimum $100">
+    <div class="error" *ngIf="submitted && f['initialDeposit'].errors">
+        <small *ngIf="f['initialDeposit'].errors['required']">Initial deposit is required</small>
+        <small *ngIf="f['initialDeposit'].errors['min']">Minimum deposit is $100</small>
+    </div>
+
+    <label>
+        <input type="checkbox" formControlName="termsAccepted"> I accept the terms and conditions
+    </label>
+    <div class="error" *ngIf="submitted && f['termsAccepted'].errors">
+        <small *ngIf="f['termsAccepted'].errors['requiredTrue']">You must accept the terms</small>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>

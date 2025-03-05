@@ -1,1 +1,17 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+    <h2 class="dashboard-title">Dashboard</h2>
+    <div class="menu-grid">
+        <button class="menu-item" (click)="navigateTo('account-opening')">
+            Account Opening
+        </button>
+        <button class="menu-item" (click)="navigateTo('add-cash')">
+            Add Cash
+        </button>
+        <button class="menu-item" (click)="navigateTo('withdraw')">
+            Withdraw
+        </button>
+        <button class="menu-item" (click)="navigateTo('deactivate-account')">
+            Deactivate Account
+        </button>
+    </div>
+</div>
