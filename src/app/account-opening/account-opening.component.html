@@ -1,5 +1,4 @@
 <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
-
     <label for="fullName">Full Name</label>
     <input id="fullName" type="text" formControlName="fullName" placeholder="Enter full name">
     <div class="error" *ngIf="submitted && f['fullName'].errors">
@@ -20,12 +19,6 @@
         <small *ngIf="f['phone'].errors['pattern']">Enter a valid 10-digit number</small>
     </div>
 
-    <label for="address">Address</label>
-    <textarea id="address" formControlName="address" placeholder="Enter address"></textarea>
-    <div class="error" *ngIf="submitted && f['address'].errors">
-        <small *ngIf="f['address'].errors['required']">Address is required</small>
-    </div>
-
     <label for="accountType">Account Type</label>
     <select id="accountType" formControlName="accountType">
         <option value="" disabled selected>Select Account Type</option>
@@ -43,12 +36,8 @@
         <small *ngIf="f['initialDeposit'].errors['min']">Minimum deposit is $100</small>
     </div>
 
-    <label>
-        <input type="checkbox" formControlName="termsAccepted"> I accept the terms and conditions
-    </label>
-    <div class="error" *ngIf="submitted && f['termsAccepted'].errors">
-        <small *ngIf="f['termsAccepted'].errors['requiredTrue']">You must accept the terms</small>
-    </div>
+    <label for="accountNumber">Account Number</label>
+    <input id="accountNumber" type="text" formControlName="accountNumber" placeholder="Auto-generated">
 
     <button type="submit">Submit</button>
 </form>
