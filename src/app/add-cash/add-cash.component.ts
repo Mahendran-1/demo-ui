@@ -21,7 +21,7 @@ export class AddCashComponent {
       email: [{value: '', disabled: true}],
       phone: [{value: '', disabled: true}],
       accountType: [{value: '', disabled: true}],
-      initialDeposit: [{value: '', disabled: true}], // ✅ ADD THIS FIELD
+      initialDeposit: [{value: '', disabled: true}],
       amount: ['', [Validators.required, Validators.min(10)]],
       remarks: ['']
     });

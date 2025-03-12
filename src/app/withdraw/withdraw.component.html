@@ -1,1 +1,37 @@
-<p>withdraw works!</p>
+<form [formGroup]="withdrawCashForm" (ngSubmit)="onSubmit()">
+    <label for="accountNumber">Account Number</label>
+    <input id="accountNumber" type="text" formControlName="accountNumber" placeholder="Enter Account Number"
+           (input)="fetchAccountDetails()" #accountSearch>
+    <button type="button" (click)="fetchAccountDetails()">Search</button>
+    <div class="error" *ngIf="submitted && f['accountNumber'].errors">
+        <small *ngIf="f['accountNumber'].errors['required']">Account Number is required</small>
+        <small *ngIf="f['accountNumber'].errors['pattern']">Account Number must be in the correct format (e.g., ACCT-XXXXXX)</small>
+    </div>
+
+    <label for="fullName">Full Name</label>
+    <input id="fullName" type="text" formControlName="fullName" placeholder="Full name" [disabled]="true">
+
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" placeholder="Email" [disabled]="true">
+
+    <label for="phone">Phone Number</label>
+    <input id="phone" type="text" formControlName="phone" placeholder="Phone number" [disabled]="true">
+
+    <label for="accountType">Account Type</label>
+    <input id="accountType" type="text" formControlName="accountType" placeholder="Account Type" [disabled]="true">
+
+    <label for="initialDeposit">Current Balance ($)</label>
+    <input id="initialDeposit" type="text" formControlName="initialDeposit" placeholder="Current Balance" [disabled]="true">
+
+    <label for="amount">Withdraw Cash ($)</label>
+    <input id="amount" type="number" formControlName="amount" placeholder="Enter Amount">
+    <div class="error" *ngIf="submitted && f['amount'].errors">
+        <small *ngIf="f['amount'].errors['required']">Amount is required</small>
+        <small *ngIf="f['amount'].errors['min']">Minimum withdrawal amount is $10</small>
+    </div>
+
+    <label for="remarks">Remarks (optional)</label>
+    <input id="remarks" type="text" formControlName="remarks" placeholder="Remarks">
+
+    <button type="submit">Withdraw</button>
+</form>
